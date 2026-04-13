@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('description');
+            $table->enum('grade', ['HG', 'RG', 'MG', 'PG', 'SD', 'FM', 'MGSD']);
+            $table->enum('originality', ['Bandai Original', 'Bootleg', 'Third-Party']);
+            $table->decimal('price', 12, 2);
+            $table->integer('stock');
+            $table->enum('status', ['available', 'out_of_stock', 'discontinued', 'coming_soon'])->default('available');
+            $table->string('image_url')->nullable();
             $table->timestamps();
         });
     }
