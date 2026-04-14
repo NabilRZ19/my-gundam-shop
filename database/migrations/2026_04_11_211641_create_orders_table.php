@@ -16,9 +16,9 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             //alamat
             $table->foreignId('address_id')->constrained('addresses')->onDelete('cascade');
-            $table->string('shipping_receiver_name'); 
+            $table->string('shipping_receiver_name');
             $table->string('shipping_phone');
-             $table->text('shipping_full_address');
+            $table->text('shipping_full_address');
 
             $table->decimal('total_price', 12, 2);
             $table->enum('status', ['pending', 'processing', 'shipped', 'delivered', 'cancelled'])->default('pending');
