@@ -18,6 +18,7 @@ class Product extends Model
         'stock',
         'status',
         'image_url',
+        'series',
     ];
 
     public function orderItems()
