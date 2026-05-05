@@ -2,7 +2,7 @@ import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-import GuestLayout from '@/Layouts/GuestLayout';
+import AppLayout from '@/Layouts/AppLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Register() {
@@ -23,10 +23,18 @@ export default function Register() {
     };
 
     return (
-        <GuestLayout>
+        <AppLayout>
             <Head title="Register" />
 
-            <form onSubmit={submit}>
+            <section className="auth-section halftone-bg">
+                <div className="auth-box">
+                    <div className="section-eyebrow" style={{ textAlign: 'center', marginBottom: '1rem' }}>
+                        <div className="eyebrow-line" style={{ margin: '0 auto 0.5rem auto' }} />
+                        <span className="eyebrow-text">New Recruit</span>
+                    </div>
+                    <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '2rem' }}>Pilot Registration</h2>
+
+                    <form onSubmit={submit}>
                 <div>
                     <InputLabel htmlFor="name" value="Name" />
 
@@ -120,19 +128,21 @@ export default function Register() {
                     />
                 </div>
 
-                <div className="mt-4 flex items-center justify-end">
+                <div className="mt-6 flex items-center justify-end">
                     <Link
                         href={route('login')}
-                        className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        className="auth-link"
                     >
                         Already registered?
                     </Link>
 
-                    <PrimaryButton className="ms-4" disabled={processing}>
+                    <button className="btn-acquire ms-4" disabled={processing} style={{ minWidth: '120px' }}>
                         Register
-                    </PrimaryButton>
+                    </button>
                 </div>
             </form>
-        </GuestLayout>
+            </div>
+            </section>
+        </AppLayout>
     );
 }

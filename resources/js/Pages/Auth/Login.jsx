@@ -3,7 +3,7 @@ import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-import GuestLayout from '@/Layouts/GuestLayout';
+import AppLayout from '@/Layouts/AppLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Login({ status, canResetPassword }) {
@@ -22,16 +22,24 @@ export default function Login({ status, canResetPassword }) {
     };
 
     return (
-        <GuestLayout>
+        <AppLayout>
             <Head title="Log in" />
 
-            {status && (
-                <div className="mb-4 text-sm font-medium text-green-600">
-                    {status}
-                </div>
-            )}
+            <section className="auth-section halftone-bg">
+                <div className="auth-box">
+                    <div className="section-eyebrow" style={{ textAlign: 'center', marginBottom: '1rem' }}>
+                        <div className="eyebrow-line" style={{ margin: '0 auto 0.5rem auto' }} />
+                        <span className="eyebrow-text">System Access</span>
+                    </div>
+                    <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '2rem' }}>Pilot Authentication</h2>
 
-            <form onSubmit={submit}>
+                    {status && (
+                        <div className="mb-4 text-sm font-medium text-green-600">
+                            {status}
+                        </div>
+                    )}
+
+                    <form onSubmit={submit}>
                 <div>
                     <InputLabel htmlFor="username" value="Username" />
 
@@ -80,21 +88,30 @@ export default function Login({ status, canResetPassword }) {
                     </label>
                 </div>
 
-                <div className="mt-4 flex items-center justify-end">
-                    {canResetPassword && (
+                    <div className="mt-6 flex items-center justify-end">
+                        {canResetPassword && (
+                            <Link
+                                href={route('password.request')}
+                                className="auth-link"
+                            >
+                                Forgot password?
+                            </Link>
+                        )}
+                        
                         <Link
-                            href={route('password.request')}
-                            className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            href={route('register')}
+                            className="auth-link ms-4"
                         >
-                            Forgot your password?
+                            Register
                         </Link>
-                    )}
 
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Log in
-                    </PrimaryButton>
+                        <button className="btn-acquire ms-4" disabled={processing} style={{ minWidth: '120px' }}>
+                            Log In
+                        </button>
+                    </div>
+                </form>
                 </div>
-            </form>
-        </GuestLayout>
+            </section>
+        </AppLayout>
     );
 }
