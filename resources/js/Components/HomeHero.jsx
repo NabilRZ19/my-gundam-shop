@@ -1,3 +1,5 @@
+import { Link } from "@inertiajs/react";
+
 export default function HomeHero() {
   return (
     <section className="hero halftone-bg">
@@ -36,7 +38,7 @@ export default function HomeHero() {
         </p>
         <div className="hero-actions">
           <button className="btn-acquire">Acquire Now</button>
-          <button className="btn-catalog">View Catalog →</button>
+          <Link href={route('catalog')} className="btn-catalog">View Catalog →</Link>
         </div>
       </div>
 

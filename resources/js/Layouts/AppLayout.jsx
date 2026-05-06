@@ -2,7 +2,8 @@ import { Link, usePage } from "@inertiajs/react";
 import { useState } from "react";
 
 export default function AppLayout({ children, categories = [], activeCategory, setActiveCategory, cartCount = 0 }) {
-  const { auth } = usePage().props;
+  const { auth, url } = usePage().props;
+  const currentUrl = usePage().url;
   const user = auth?.user;
   const [dropdownOpen, setDropdownOpen] = useState(false);
   return (
@@ -10,14 +11,14 @@ export default function AppLayout({ children, categories = [], activeCategory, s
       {/* HEADER */}
       <header className="header">
         <div className="header-inner">
-          <a className="logo" href="/">
+          <Link className="logo" href="/">
             <div className="logo-mark">MGS</div>
             <span className="logo-text">My<span>Gundam</span>Shop</span>
-          </a>
+          </Link>
 
           <nav className="nav-cats">
-            <a href="/" className="nav-link active">Home</a>
-            <a href="#" className="nav-link">Catalog</a>
+            <Link href="/" className={`nav-link ${currentUrl === '/' ? 'active' : ''}`}>Home</Link>
+            <Link href={route('catalog')} className={`nav-link ${currentUrl.startsWith('/catalog') ? 'active' : ''}`}>Catalog</Link>
             <a href="#" className="nav-link">Reviews</a>
           </nav>
 

@@ -14,6 +14,7 @@ class Product extends Model
         'description',
         'grade',
         'originality',
+        'is_pbandai',
         'price',
         'stock',
         'status',

@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { Link } from "@inertiajs/react";
 import AppLayout from "../Layouts/AppLayout";
+import "../../css/home.css";
 import HomeHero from "../Components/HomeHero";
 import HomeTicker from "../Components/HomeTicker";
 import HomeReviews from "../Components/HomeReviews";
@@ -59,7 +61,7 @@ export default function Home({ products = [], categories = [], seriesList = [] }
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '3rem' }}>
-          <a href="#" className="btn-acquire" style={{ textDecoration: 'none' }}>View All Catalog →</a>
+          <Link href={route('catalog')} className="btn-acquire" style={{ textDecoration: 'none' }}>View All Catalog →</Link>
         </div>
       </section>
     </AppLayout>
